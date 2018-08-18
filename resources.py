@@ -29,7 +29,7 @@ class BalanceUser(Resource):
 
 class BalanceUserAdd(Resource):
     def post(self, username):
-        int(request.form['amount'])
+        amount = int(request.form['amount'])
         balance = BalanceModel.query.filter_by(username = username).first()
         balance.add(amount)
         return {'status': 'OK'}
@@ -37,7 +37,7 @@ class BalanceUserAdd(Resource):
 
 class BalanceUserCharge(Resource):
     def post(self, username):
-        int(request.form['amount'])
+        amount = int(request.form['amount'])
         balance = BalanceModel.query.filter_by(username = username).first()
         balance.charge(amount)
         return {'status': 'OK'}
